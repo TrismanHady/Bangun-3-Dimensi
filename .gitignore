@@ -1,13 +1,209 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
+#include <windows.h>
+#include <glut.h>
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
+void init(void);
+void display(void);
+void keyboard(unsigned char, int, int);
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
+int main (int argc, char **argv)
+{
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(600, 600);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("TUGAS ARTIKEL NOVI-CAROLINE");
+    init();
+    glutDisplayFunc(display);
+    glutKeyboardFunc(keyboard);  /* set keyboard handler */
+    glutMainLoop();
+    return 0;
+}
+
+void init(void)
+{
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(-15.0, 15.0, -15.0, 15.0, -15.0, 15.0);
+}
+
+void display(void)
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_QUADS);  //persegi atas
+        glColor3f(1.0, 0.0, 0.0);   
+        glVertex3f(-6.0, 5.0, 0.0); //titi kiri atas depan
+        glColor3f(1.0, 1.0, 0.0);  
+        glVertex3f(6.0, 5.0, 0.0); //titik kanan atas depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(6.0, 5.0, 2.0); //titik kanan atas belakang
+        glColor3f(1.0, 1.0, 0.0); 
+        glVertex3f(-6.0, 5.0, 2.0); //titik kiri atas belakang
+        
+    glBegin(GL_QUADS);  //persegi bawah
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-6.0, -1.0, 0.0); //titik kiri bawah depan
+        glColor3f(1.0, 1.0, 0.0); 
+        glVertex3f(6.0, -1.0, 0.0); //titik kanan bawah depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(6.0, -1.0, 2.0); //titik kanan bawah belakang
+        glColor3f(1.0, 1.0, 0.0); 
+        glVertex3f(-6.0, -1.0, 2.0); //titik kiri bawah belakang
+    glEnd();
+
+    glBegin(GL_QUADS);  //persegi kanan
+        glColor3f(1.0, 0.0, 0.0);   
+        glVertex3f(6.0, 5.0, 0.0); //titi kanan atas depan
+        glColor3f(1.0, 1.0, 0.0); 
+        glVertex3f(6.0, -1.0, 0.0); //titik kanan bawah depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(6.0, -1.0, 2.0); //titik kanan bawah belakang
+        glColor3f(1.0, 1.0, 0.0); 
+        glVertex3f(6.0, 5.0, 2.0); //titik kanan atas belakang
+    glEnd();
+
+    glBegin(GL_QUADS);  //persegi kiri
+        glColor3f(1.0, 0.0, 0.0);   
+        glVertex3f(-6.0, 5.0, 0.0); //titi kiri atas depan
+        glColor3f(1.0, 1.0, 0.0); 
+        glVertex3f(-6.0, -1.0, 0.0); //titik kiri bawah depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-6.0, -1.0, 2.0); //titik kiri bawah belakang
+        glColor3f(1.0, 1.0, 0.0); 
+        glVertex3f(-6.0, 5.0, 2.0); //titik kiri atas belakang
+    glEnd();
+    
+    glBegin(GL_QUADS);  //persegi belakang
+        glColor3f(1.0, 0.0, 0.0);   
+        glVertex3f(6.0, -1.0, 2.0); //titi kanan bawah belakang
+        glColor3f(1.0, 1.0, 0.0); 
+        glVertex3f(-6.0, -1.0, 2.0); //titik kiri bawah belakang
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-6.0, 5.0, 2.0); //titik kiri atas belakang
+        glColor3f(1.0, 1.0, 0.0); 
+        glVertex3f(6.0, 5.0, 2.0); //titik kanan atas belakang
+    glEnd();
+    
+    glBegin(GL_QUADS);  //persegi depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-6.0, 5.0, 0.0); //titik kiri atas depan
+        glColor3f(1.0, 1.0, 0.0);  
+        glVertex3f(6.0, 5.0, 0.0); //titik kanan atas depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(6.0, -1.0, 0.0); //titik kanan bawah depan
+        glColor3f(1.0, 1.0, 0.0); 
+        glVertex3f(-6.0, -1.0, 0.0); //titik kiri bawah depan
+    glEnd();
+
+
+
+    glBegin(GL_QUADS); //tiang depan
+        glColor3f(0.0, 0.0, 1.0);    
+        glVertex3f(-1.0, -1.0, 0.5); //titi kiri atas depan
+        glColor3f(0.0, 1.0, 0.0); 
+        glVertex3f(1.0, -1.0, 0.5); //titik kanan atas depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(1.0, -3.0, 0.5); //titik kanan bawah depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-1.0, -3.0, 0.5); //titik kiri bawah depan
+    glEnd();
+    glBegin(GL_QUADS); //tiang belakang
+        glColor3f(0.0, 0.0, 1.0);    
+        glVertex3f(-1.0, -1.0, 1.5); //titi kiri atas belakang
+        glColor3f(0.0, 1.0, 0.0); 
+        glVertex3f(1.0, -1.0, 1.5); //titik kanan atas belakang
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(1.0, -3.0, 1.5); //titik kanan bawah belakang
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-1.0, -3.0, 1.5); //titik kiri bawah belakang
+    glEnd();
+    glBegin(GL_QUADS); //tiang kiri
+        glColor3f(0.0, 0.0, 1.0);    
+        glVertex3f(-1.0, -1.0, 0.5); //titi kiri atas depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-1.0, -3.0, 0.5); //titik kiri bawah depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-1.0, -3.0, 1.5); //titik kiri bawah belakang
+        glColor3f(0.0, 0.0, 1.0);    
+        glVertex3f(-1.0, -1.0, 1.5); //titi kiri atas belakang
+    glEnd();
+    glBegin(GL_QUADS); //tiang kanan
+        glColor3f(0.0, 1.0, 0.0); 
+        glVertex3f(1.0, -1.0, 0.5); //titik kanan atas depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(1.0, -3.0, 0.5); //titik kanan bawah depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(1.0, -3.0, 1.5); //titik kanan bawah belakang
+        glColor3f(0.0, 1.0, 0.0); 
+        glVertex3f(1.0, -1.0, 1.5); //titik kanan atas belakang
+    glEnd();
+
+    glBegin(GL_QUADS); //alas depan
+        glColor3f(0.0, 0.0, 1.0);    
+        glVertex3f(-1.0, -3.0, 0.5); //titi kiri atas depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(1.0, -3.0, 0.5); //titik kanan atas depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(3.0, -4.0, 0.5); //titik kanan bawah depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-3.0, -4.0, 0.5); //titik kiri bawah depan
+    glEnd();
+    glBegin(GL_QUADS); //alas belakang
+        glColor3f(0.0, 0.0, 1.0);    
+        glVertex3f(-1.0, -3.0, 1.5); //titi kiri atas belakang
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(1.0, -3.0, 1.5); //titik kanan atas belakang
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(3.0, -4.0, 1.5); //titik kanan bawah belakang
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-3.0, -4.0, 1.5); //titik kiri bawah belakang
+    glEnd();
+    glBegin(GL_QUADS); //alas bawah
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(3.0, -4.0, 0.5); //titik kanan bawah depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-3.0, -4.0, 0.5); //titik kiri bawah depan
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-3.0, -4.0, 1.5); //titik kiri bawah belakang
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(3.0, -4.0, 1.5); //titik kanan bawah belakang
+    glEnd();
+    glBegin(GL_QUADS); //alas kiri
+        glColor3f(0.0, 0.0, 1.0);    
+        glVertex3f(-1.0, -3.0, 0.5); //titi kiri atas depan
+        glColor3f(0.0, 0.0, 1.0);    
+        glVertex3f(-1.0, -3.0, 1.5); //titi kiri atas belakang
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-3.0, -4.0, 1.5); //titik kiri bawah belakang
+        glColor3f(1.0, 0.0, 0.0); 
+        glVertex3f(-3.0, -4.0, 0.5); //titik kiri bawah depan
+    glEnd();
+
+    glutSwapBuffers();
+}
+
+void keyboard(unsigned char key, int x, int y)
+{
+    /* this is the keyboard event handler
+       the x and y parameters are the mouse 
+       coordintes when the key was struck */
+    switch (key)
+    {
+    case 'w':
+    case 'W':
+        glRotatef(3.0, 1.0, 0.0, 0.0); /* rotate up */
+        break;
+    case 's':
+    case 'S':
+        glRotatef(-3.0, 1.0, 0.0, 0.0); /* rotate down */
+        break;
+    case 'a':
+    case 'A':
+        glRotatef(3.0, 0.0, 1.0, 0.0); /* rotate left */
+        break;
+    case 'd':
+    case 'D':
+        glRotatef(-3.0, 0.0, 1.0, 0.0); /* rotate right */
+    }
+    display(); /* repaint the window */
+}
